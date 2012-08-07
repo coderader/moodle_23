@@ -54,7 +54,7 @@ class quizaccess_securewindow extends quiz_access_rule_base {
 
     public static function make(quiz $quizobj, $timenow, $canignoretimelimits) {
 
-        if ($quizobj->get_quiz()->browsersecurity !== 'securewindow') {
+        if (($quizobj->get_quiz()->browsersecurity !== 'securewindow') || has_capability('mod/quiz:viewreports', $quizobj->get_context())) {
             return null;
         }
 
