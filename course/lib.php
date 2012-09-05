@@ -47,9 +47,6 @@ define('FIRSTUSEDEXCELROW', 3);
 define('MOD_CLASS_ACTIVITY', 0);
 define('MOD_CLASS_RESOURCE', 1);
 
-define('COURSE_DISPLAY_SINGLEPAGE', 0); // display all sections on one page
-define('COURSE_DISPLAY_MULTIPAGE', 1); // split pages into a page per section
-
 function make_log_url($module, $url) {
     switch ($module) {
         case 'course':
@@ -2253,22 +2250,6 @@ function make_categories_options() {
         }
     }
     return $cats;
-}
-
-/**
- * Gets the name of a course to be displayed when showing a list of courses.
- * By default this is just $course->fullname but user can configure it. The
- * result of this function should be passed through print_string.
- * @param object $course Moodle course object
- * @return string Display name of course (either fullname or short + fullname)
- */
-function get_course_display_name_for_list($course) {
-    global $CFG;
-    if (!empty($CFG->courselistshortnames)) {
-        return $course->shortname . ' ' .$course->fullname;
-    } else {
-        return $course->fullname;
-    }
 }
 
 /**
